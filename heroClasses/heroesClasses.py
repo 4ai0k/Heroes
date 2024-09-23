@@ -6,10 +6,19 @@ class Hero:
 
     def __init__(self, name):
         """Написан конструктор для класса"""
-        self.name = name
+        self.__name = name
         self.my_hero_skills = []
-        self.level = 0
-        self.exp = 0
+        self.__level = 0
+        self.__exp = 0
+
+    def get_name(self):
+        return self.__name
+
+    def get_level(self):
+        return self.__level
+
+    def get_exp(self):
+        return self.__exp
 
     def get_skills(self, character_class):
         """Добавлен геттер для навыков, результат зависит от выбранного класса"""
@@ -25,13 +34,10 @@ class Hero:
     def get_new_level(self):
         if self.exp >= 1000:
             self.level = 3
-            self.add_skill()
         elif self.exp >= 500:
             self.level = 2
-            self.add_skill()
         elif self.exp >= 200:
             self.level = 1
-            self.add_skill()
         else:
             self.level = 0
         return f"Герой {self.name}, теперь {self.level} уровня, навыки: {', '.join(self.my_hero_skills)}"
@@ -40,10 +46,6 @@ class Hero:
         self.exp += exp
         new_level = self.get_new_level()
         return new_level
-
-    def add_skill(self):
-        pass
-
 
 class MyHero(Hero):
     pass
