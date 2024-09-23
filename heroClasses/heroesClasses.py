@@ -32,20 +32,28 @@ class Hero:
             exit("Ошибка перезапустите программу!")
 
     def get_new_level(self):
-        if self.exp >= 1000:
-            self.level = 3
-        elif self.exp >= 500:
-            self.level = 2
-        elif self.exp >= 200:
-            self.level = 1
+        if self.get_exp() >= 1000:
+            self.__level = 3
+        elif self.get_exp() >= 500:
+            self.__level = 2
+        elif self.get_exp() >= 200:
+            self.__level = 1
         else:
             self.level = 0
-        return f"Герой {self.name}, теперь {self.level} уровня, навыки: {', '.join(self.my_hero_skills)}"
+        return f"Герой {self.get_name()}, теперь {self.get_level()} уровня, навыки: {', '.join(self.my_hero_skills)}"
 
     def add_exp(self, exp):
-        self.exp += exp
+        self.__exp += exp
         new_level = self.get_new_level()
         return new_level
 
 class MyHero(Hero):
-    pass
+
+    def __init__(self, name, character_class):
+        super().__init__(name)
+        self.__skill_list = super().get_skills(character_class)
+
+    def get_skill_list(self):
+        return self.__skill_list
+
+
