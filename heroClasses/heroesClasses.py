@@ -7,7 +7,7 @@ class Hero:
     def __init__(self, name):
         """Написан конструктор для класса"""
         self.__name = name
-        self.my_hero_skills = []
+        self.__my_hero_skills = []
         self.__level = 0
         self.__exp = 0
 
@@ -17,8 +17,14 @@ class Hero:
     def get_level(self):
         return self.__level
 
+    def get_my_hero_skills(self):
+        return self.__my_hero_skills
+
     def get_exp(self):
         return self.__exp
+
+    def set_my_hero_skills(self, my_hero_skills):
+        self.__my_hero_skills = my_hero_skills
 
     def get_skills(self, character_class):
         """Добавлен геттер для навыков, результат зависит от выбранного класса"""
@@ -43,7 +49,7 @@ class Hero:
             self.add_skill()
         else:
             self.__level = 0
-        return f"Герой {self.get_name()}, теперь {self.get_level()} уровня, навыки: {', '.join(self.my_hero_skills)}"
+        return f"Герой {self.get_name()}, теперь {self.get_level()} уровня, навыки: {', '.join(self.get_my_hero_skills())}"
 
     def add_exp(self, exp):
         self.__exp += exp
@@ -52,6 +58,7 @@ class Hero:
 
     def add_skill(self):
         pass
+
 
 class MyHero(Hero):
 
@@ -65,10 +72,12 @@ class MyHero(Hero):
 
     def add_skill(self):
         while True:
-            skill = input(f'{super().get_name()}, выберете навык: {', '.join(self.get_skill_list())}')
+            skill = input(f'{super().get_name()}, выберете навык: {", ".join(self.get_skill_list())}\n')
             while skill not in self.get_skill_list():
-                skill = input(f'НЕВЕРНЫЙ ВЫБОР!! Выберете навык: {', '.join(self.get_skill_list())}')
-            super().my_hero_skills.append(skill)
+                skill = input(f'НЕВЕРНЫЙ ВЫБОР!! Выберете навык: {", ".join(self.get_skill_list())}\n')
+            my_hero_skills = super().get_my_hero_skills()
+            my_hero_skills.append(skill)
+            super().set_my_hero_skills(my_hero_skills)
             self.__skill_list.remove(skill)
-            if  list(self.get_skill_list()) == super().get_level():
+            if len(my_hero_skills) == super().get_level():
                 break

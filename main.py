@@ -1,17 +1,18 @@
-from heroClasses.heroesClasses import Hero,MyHero
+from heroClasses.heroesClasses import MyHero
 
-gimli = MyHero("Гимли", "воин")
-print(gimli.add_exp(200))
-print(gimli.add_exp(300))
-print(gimli.add_exp(500))
+if __name__ == '__main__':
+    gimli = MyHero("Гимли", "воин")
+    print(gimli.add_exp(200))
+    print(gimli.add_exp(300))
+    print(gimli.add_exp(500))
 
-print()
+    print()
 
-legolas = MyHero("Леголас", "рейнджер")
-print(gimli.add_exp(500))
-print(gimli.add_exp(500))
+    legolas = MyHero("Леголас", "рейнджер")
+    print(legolas.add_exp(500))
+    print(legolas.add_exp(500))
 
-print()
+    print()
 
-gendalf = MyHero("Гендальф", "маг")
-print(gendalf.add_exp())
+    gendalf = MyHero("Гендальф", "маг")
+    print(gendalf.add_exp(1000))
