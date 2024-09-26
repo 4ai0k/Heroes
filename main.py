@@ -1,4 +1,4 @@
-from heroClasses.heroesClasses import MyHero
+from heroClasses.heroesClasses import Hero,MyHero
 
 gimli = MyHero("Гимли", "воин")
 print(gimli.add_exp(200))
